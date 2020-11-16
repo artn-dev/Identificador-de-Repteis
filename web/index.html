@@ -1,0 +1,34 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width:device-width, intial-scale:1.0">
+        <link rel="stylesheet" href="styles.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>        
+
+        <script type="text/javascript" src="/eel.js"></script>
+        <script type="text/javascript" src="drop.js"></script>
+        </script>
+
+        <title>Projeto IA - IF668</title>
+    </head>
+
+    <body>
+        <div class="container">
+            <h1>Identificador de Répteis Inator</h1>
+
+            <div id="drop-area" ondrop="drop(event); clear_border()" 
+                ondragover="set_border(); allowDrop(event)" 
+                ondragleave="clear_border()">
+                <img id = "imagem" src="">
+            </div>
+            
+            <div class="result">
+                <p> </p>
+            </div>
+
+            <button id="testar" onclick="recognizer()"> Identificar </button>
+        </div>
+    </body>
+</html>
+    
