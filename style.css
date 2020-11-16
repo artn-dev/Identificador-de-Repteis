@@ -1,0 +1,48 @@
+* {
+    margin: 0; padding: 0;
+}
+:root {
+    font-size: 16px;
+}
+
+body {
+    background-color: #c2c5c2;
+}
+
+.container, button {
+    --height: 90%;
+    --width: 60%;
+    max-width: var(--width);
+    height: var(--height);
+    margin: calc((100% - var(--height)) / 2) calc((100% - var(--width)) / 2);
+
+}
+.container {
+    background-color: #d9e4d9;
+    padding: 5rem;
+    text-align: center;
+}
+
+#drop-area {
+    height: 20rem;
+    border-radius: 2rem;;
+    /*border: 0.7rem dashed #3482d0;*/
+    background: #ffffff;
+}
+
+button {
+    margin-top: 4rem;
+    width: 50%;
+    height: 2rem;
+    border-radius: 2rem;
+    background-color: #d6dadc;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+#imagem {
+    max-width: 100%; 
+    max-height: 100%;
+}
