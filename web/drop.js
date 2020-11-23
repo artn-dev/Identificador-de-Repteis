@@ -40,7 +40,7 @@ async function drop(ev) {
         const div = $("<div>").append(data);
         url = $(div).find("img").attr('src');
     }
-    console.log(url)
+
     document.querySelector("img#imagem").src = url;
 
     const result = document.querySelector(".result p");
@@ -49,15 +49,13 @@ async function drop(ev) {
 
 function recognizer(event) {
     var image = document.querySelector("#imagem").src;
-    
-    if (!(image.slice(0, 11) == "data:image/")) {
-        eel.getDataFromUrl(image)((res) => {
-            image = res;
-        })
-    } 
     eel.recognize(image)((res) => {
         const result = document.querySelector(".result p");
-        result.innerHTML = `Tenho ${res[1]}% de certeza que é ${res[0]}`
+        if (res.length == 1) {
+            result.innerHTML = `Erro: ${res[0]}`
+        } else {
+            result.innerHTML = `Tenho ${res[1]}% de certeza que é ${res[0]}`
+        }
         result.style.display = "flex";
     });
 }
