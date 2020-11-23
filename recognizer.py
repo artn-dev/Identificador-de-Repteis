@@ -22,21 +22,26 @@ def classifyImage(key, imagedata):
     return topMatch
   else:
     errorData = response.json()
-    print (errorData)
-    response.raise_for_status()
+    return errorData
 
 @eel.expose
 def recognize(imagem):
-	REPTIL = "45f32900-25a4-11eb-968c-1310e84daba7f12eaa6e-4333-4285-a125-345f0852171e"
-	ORDEM = "84d75fa0-2299-11eb-afcb-7b0f0f491d85874e1865-6633-4ca7-9665-037ec967042f"
-	UNICO = "c421e800-2295-11eb-afcb-7b0f0f491d8557d89253-da25-481c-8550-27892758496a"
+  if imagem[0:11] != "data:image/":
+    imagem = getDataFromUrl(imagem)
 
-	result = classifyImage(REPTIL, imagem)
-	if result["class_name"] != "reptil" and result['confidence'] >= 80:
-		result = classifyImage(ORDEM, imagem)
-		if result == "squamata":
-			result = classifyImage(UNICO, imagem)
-	return result["class_name"], result["confidence"]
+  REPTIL = "45f32900-25a4-11eb-968c-1310e84daba7f12eaa6e-4333-4285-a125-345f0852171e"
+  ORDEM = "84d75fa0-2299-11eb-afcb-7b0f0f491d85874e1865-6633-4ca7-9665-037ec967042f"
+  UNICO = "c421e800-2295-11eb-afcb-7b0f0f491d8557d89253-da25-481c-8550-27892758496a"
 
-eel.init('web')
-eel.start('index.html')
+  result = classifyImage(REPTIL, imagem)
+  if not result.get("error") and result["class_name"] != "reptil" and result['confidence'] >= 80:
+    result = classifyImage(ORDEM, imagem)
+    if not result.get("error") and result == "squamata":
+      result = classifyImage(UNICO, imagem)
+  if result.get("error"):
+    return (result.get("error"), )
+  return result["class_name"], result["confidence"]
+
+if __name__ == "__main__":
+  eel.init('web')
+  eel.start('index.html')
