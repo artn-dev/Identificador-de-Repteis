@@ -37,3 +37,10 @@ Foi utilizado 3 máquinas para se realizar a identificação, no qual:
 A parte de machine learning é disponibilizada pela IBM através do machine learning for kids. O frontend foi feito através de HTML/CSS/Javascript puro, no qual é inicializado através de um servidor python se utilizando da biblioteca *Eel* para disponibilizar a possibilidade de usar funções python para as requisições.
 
 > Foi se utilizado várias formas para se realizar as requisições unicamente através do browser utilizando Javascript, mas tudo foi bloqueado pelo CORS.
+
+Para acessar as contas do Machine Learning for Kids
+JDaniloC
+food%theatre
+
+JDaniloC2
+w1544yuGXgix
